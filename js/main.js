@@ -87,4 +87,23 @@ backToTopButton.addEventListener('click', () => {
         top: 0,
         behavior: 'smooth'
     });
+});
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+}
+
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    
+    // Save theme preference
+    const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
 }); 

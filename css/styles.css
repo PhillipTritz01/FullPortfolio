@@ -10,15 +10,33 @@
 }
 
 :root {
+    /* Dark theme (default) */
     --bg-color: #121212;
     --second-bg-color: #1e1e1e;
     --text-color: #e5e7eb;
     --main-color: #2ecc71;
     --secondary-text: #e5e7eb;
     --heading-color: #e5e7eb;
+    --link-color: #2ecc71;
+    --card-bg: #1e1e1e;
+    --border-color: rgba(46, 204, 113, 0.2);
     --neon-glow: 0 0 10px var(--main-color),
                  0 0 20px var(--main-color),
                  0 0 40px var(--main-color);
+}
+
+/* Light theme */
+body.light-mode {
+    --bg-color: #F5F5F5;
+    --second-bg-color: #FFFFFF;
+    --text-color: #111111;
+    --main-color: #0077CC;
+    --secondary-text: #333333;
+    --heading-color: #111111;
+    --link-color: #0077CC;
+    --card-bg: #FFFFFF;
+    --border-color: #CCCCCC;
+    --neon-glow: none;
 }
 
 html {
@@ -44,10 +62,10 @@ section {
     left: 0;
     width: 100%;
     padding: 2rem 9%;
-    background: rgba(18, 18, 18, 0.85);
+    background: rgba(var(--bg-color), 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,11 +74,11 @@ section {
 }
 
 .header.scrolled {
-    background: rgba(18, 18, 18, 0.95);
+    background: rgba(var(--bg-color), 0.95);
 }
 
 .header:hover {
-    background: rgba(18, 18, 18, 1);
+    background: rgba(var(--bg-color), 1);
 }
 
 .logo {
@@ -135,7 +153,7 @@ p {
 
 hr {
     border: none;
-    border-top: 2px solid var(--main-color);
+    border-top: 2px solid var(--border-color);
     margin: 1.5rem 0 3rem;
     width: 100%;
     opacity: 0.3;
@@ -286,12 +304,12 @@ hr {
 }
 
 .card {
-    background: var(--second-bg-color);
+    background: var(--card-bg);
     padding: 3rem;
     border-radius: 1rem;
     margin-bottom: 2rem;
     transition: 0.5s ease;
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--border-color);
     box-shadow: 0 0 20px rgba(46, 204, 113, 0.1);
 }
 
@@ -668,10 +686,10 @@ section:first-of-type {
         left: 0;
         width: 100%;
         padding: 1rem 4%;
-        background: rgba(18, 18, 18, 0.95);
+        background: rgba(var(--bg-color), 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(46, 204, 113, 0.2);
+        border-top: 1px solid var(--border-color);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         display: none;
         transition: background 0.3s ease;
@@ -910,4 +928,46 @@ section:first-of-type {
 
 .back-to-top:hover i {
     transform: translateY(-2px);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: transparent;
+    color: var(--text-color);
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    color: var(--main-color);
+    transform: rotate(15deg);
+}
+
+.theme-toggle i {
+    transition: all 0.3s ease;
+}
+
+/* Show/hide appropriate icon based on theme */
+body:not(.light-mode) .theme-toggle .fa-moon {
+    display: none;
+}
+
+body.light-mode .theme-toggle .fa-sun {
+    display: none;
 } 
