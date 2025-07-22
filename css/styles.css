@@ -488,22 +488,26 @@ hr {
 }
 
 @keyframes animate {
-    0%, 20% {
+    0%, 16.66% {
         content: "System Administrator";
     }
-    20.01%, 40% {
+    16.67%, 33.33% {
         content: "Network Specialist";
     }
-    40.01%, 60% {
+    33.34%, 50% {
         content: "Linux Administrator";
     }
-    60.01%, 80% {
+    50.01%, 66.66% {
         content: "Security Analyst";
     }
-    80.01%, 100% {
+    66.67%, 83.33% {
         content: "IT Professional";
     }
+    83.34%, 100% {
+        content: "Web Developer";
+    }
 }
+
 
 .about-cards {
     display: grid;
@@ -971,6 +975,7 @@ body:not(.light-mode) .theme-toggle .fa-moon {
 body.light-mode .theme-toggle .fa-sun {
     display: none;
 } 
+<<<<<<< HEAD
 
 /* Mobile menu overlay */
 .menu-overlay {
@@ -1028,3 +1033,5 @@ body.menu-open {
         width: 100%;
     }
 } 
+=======
+>>>>>>> 4ec57300f5f11fd68a4d571cb10405aabef68d5a
