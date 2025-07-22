@@ -1,3 +1,12 @@
+// Prevent page from reloading at previous scroll position (especially on mobile)
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+});
+
 // Menu icon functionality
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');
