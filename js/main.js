@@ -1,25 +1,36 @@
 // Menu icon functionality
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');
+const menuOverlay = document.querySelector('.menu-overlay');
+const body = document.body;
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
+// Toggle mobile menu
+const toggleMenu = () => {
     navbar.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    body.classList.toggle('menu-open');
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-times');
 };
+
+menuIcon.addEventListener('click', toggleMenu);
 
 // Close menu when clicking a link
 document.querySelectorAll('.navbar a').forEach(link => {
     link.addEventListener('click', () => {
-        menuIcon.classList.remove('bx-x');
-        navbar.classList.remove('active');
+        if (navbar.classList.contains('active')) {
+            toggleMenu();
+        }
     });
 });
 
-// Close menu when clicking outside
+// Close menu when clicking overlay
+menuOverlay.addEventListener('click', toggleMenu);
+
+// Close menu when clicking outside (desktop edge case)
 document.addEventListener('click', (e) => {
-    if (!menuIcon.contains(e.target) && !navbar.contains(e.target)) {
-        menuIcon.classList.remove('bx-x');
-        navbar.classList.remove('active');
+    if (navbar.classList.contains('active') && !navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+        toggleMenu();
     }
 });
 
@@ -91,7 +102,6 @@ backToTopButton.addEventListener('click', () => {
 
 // Theme toggle functionality
 const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
 
 // Check for saved theme preference
 const savedTheme = localStorage.getItem('theme');
