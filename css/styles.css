@@ -990,9 +990,44 @@ body.light-mode .theme-toggle .fa-sun {
     z-index: 150;
 }
 
+/* Improve visibility of overlay and drawer when menu is open */
 .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
+    background: rgba(0, 0, 0, 0.7); /* darker backdrop */
+}
+
+@media (max-width: 1100px) {
+    /* Add glow to the drawer when open */
+    .navbar.active {
+        box-shadow: 0 0 20px var(--main-color), 0 0 40px rgba(0,0,0,0.6);
+    }
+
+    /* Highlight nav links inside the drawer */
+    .navbar a {
+        position: relative;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .navbar a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--main-color);
+        transition: width 0.3s ease;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: var(--main-color);
+        padding-left: 1rem;
+    }
+
+    .navbar a:hover::before,
+    .navbar a.active::before {
+        width: 100%;
+    }
 }
 
 body.menu-open {
