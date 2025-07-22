@@ -975,9 +975,8 @@ body:not(.light-mode) .theme-toggle .fa-moon {
 body.light-mode .theme-toggle .fa-sun {
     display: none;
 } 
-<<<<<<< HEAD
 
-/* Mobile menu overlay */
+/* --- Mobile overlay and right-side drawer navbar (override) --- */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -996,22 +995,20 @@ body.light-mode .theme-toggle .fa-sun {
     visibility: visible;
 }
 
-/* Prevent background scroll when menu is open */
 body.menu-open {
     overflow: hidden;
 }
 
-/* Sliding mobile navbar */
 @media (max-width: 1100px) {
     .navbar {
         position: fixed;
         top: 0;
-        left: -100%; /* hide off-canvas */
-        right: auto;
+        right: -100%;
+        left: auto;
         width: 80%;
         max-width: 320px;
         height: 100vh;
-        overflow-y: auto; /* allow scroll if menu taller than viewport */
+        overflow-y: auto;
         background: rgba(var(--bg-color), 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -1020,18 +1017,15 @@ body.menu-open {
         flex-direction: column;
         align-items: flex-start;
         gap: 2rem;
-        transition: left 0.3s ease;
-        z-index: 200; /* above header & overlay */
+        transition: right 0.3s ease;
+        z-index: 200;
     }
 
     .navbar.active {
-        left: 0; /* slide in */
+        right: 0; /* slide in */
     }
 
-    /* Ensure links fill full width for easier tapping */
     .navbar a {
         width: 100%;
     }
 } 
-=======
->>>>>>> 4ec57300f5f11fd68a4d571cb10405aabef68d5a
